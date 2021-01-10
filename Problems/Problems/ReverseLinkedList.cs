@@ -18,7 +18,7 @@ namespace Problems
 
     class Program
     {
-        private Node Head = null;
+        public Node Head = null;
 
         public void AddNode(Node head, Node node)
         {
@@ -61,7 +61,7 @@ namespace Problems
         }
         
 
-        static void Main(string[] args)
+        /*static void Main(string[] args)
         {
             Program List = new Program();
             String t = Console.ReadLine();
@@ -74,7 +74,7 @@ namespace Problems
 
             List.ReverseList(null, List.Head);
             List.PrintList(List.Head);
-        }
+        }*/
     }
 }
 
