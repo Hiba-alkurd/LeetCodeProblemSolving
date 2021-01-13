@@ -1,8 +1,6 @@
-﻿using System;
-
-namespace Problems
+﻿namespace DefaultNamespace
 {
-    class Program
+    public class main
     {
         public bool IsPalindrome(int x)
         {
@@ -19,12 +17,6 @@ namespace Problems
             }
 
             return (x == y || x == y/10);
-        }
-        static void Main(string[] args)
-        {
-            int num = 10;
-            var tem = new Program();
-            Console.WriteLine(tem.IsPalindrome(num));
         }
     }
 }
