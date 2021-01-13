@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace Problems
+﻿namespace DefaultNamespace
 {
-    class Program
+    public class main
     {
         public int NumIdenticalPairs(int[] nums)
         {
@@ -25,12 +22,6 @@ namespace Problems
                 }
             }
             return count;
-        }
-        static void Main(string[] args)
-        {
-            int[] nums = {1, 1, 1, 1};
-            var tem = new Program(); 
-            Console.WriteLine("num: " + tem.NumIdenticalPairs(nums));
         }
     }
 }
