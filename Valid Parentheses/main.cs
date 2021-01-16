@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-namespace Problems
+﻿namespace DefaultNamespace
 {
-    class Program
+    public class main
     {
         public bool IsValid(string s)
         {
@@ -34,15 +32,6 @@ namespace Problems
             if (par == '{') return '}';
             if (par == '(') return ')';
             return '-';
-        }
-        
-        static void Main(string[] args)
-        {
-            
-            string test = "(((((())))))";
-            var tem = new Program();
-            Console.WriteLine(tem.IsValid(test));
-            
         }
     }
 }
