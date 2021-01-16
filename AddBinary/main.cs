@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
-
-namespace Problems
+﻿namespace DefaultNamespace
 {
-    class Program
+    public class main
     {
         public string AddBinary(string a, string b)
         {
@@ -20,7 +16,6 @@ namespace Problems
             for ( var i = a.Length - 1; i >= 0; i--)
             {
                 (sum, carry) = FindSum(a[i], b[i], carry);
-                Console.WriteLine(sum);
                 result.Push(sum);
             }
 
@@ -46,12 +41,6 @@ namespace Problems
             if (sum == 2) return ('0', '1');
             if (sum == 3) return ('1', '1');
             return ('0', '0');
-        }
-        static void Main(string[] args)
-        {
-            string a = "0";
-            string b = "0";
-            Console.WriteLine(new Program().AddBinary(a,b));
         }
     }
 }
