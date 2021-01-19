@@ -2,28 +2,22 @@
 {
     public class main
     {
-        public int LengthOfLongestSubstring(string s)
-        {
-            List<char> current = new List<char>();
-            List<char> sub = new List<char>();
-            
-            foreach (var character in s)
-            {
-                if (current.Contains(character))
-                {
-                    IEnumerable<char> e = current.Where(x => current.IndexOf(character) < current.IndexOf(x));
-  
-                    if (current.Count > sub.Count)
-                    {
-                        sub = current.GetRange(0, current.Count);
-                    }
-
-                    current = e.ToList();
-                    
+        public int LengthOfLongestSubstring(String s) {
+            int n = s.Length, ans = 0;
+            var map = new Dictionary<char, int>(); 
+            for (int j = 0, i = 0; j < n; j++) {
+                if (map.ContainsKey(s[j])) {
+                    i = Math.Max(map[s[j]], i);
+                    map[s[j]] = j + 1;
                 }
-                current.Add(character);
+                else
+                {
+                    map.Add(s[j], j + 1);
+                }
+                ans = Math.Max(ans, j - i + 1);
+                    
             }
-            return Math.Max(current.Count, sub.Count);                                                              
+            return ans;
         }
     }
 }
