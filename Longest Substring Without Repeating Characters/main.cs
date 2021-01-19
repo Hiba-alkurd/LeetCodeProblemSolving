@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
-namespace Problems
+﻿namespace DefaultNamespace
 {
-    class Program
+    public class main
     {
         public int LengthOfLongestSubstring(string s)
         {
@@ -28,12 +24,6 @@ namespace Problems
                 current.Add(character);
             }
             return Math.Max(current.Count, sub.Count);                                                              
-        }
-
-        static void Main(string[] args)
-        {
-            string s = "dvdf";
-            Console.WriteLine(new Program().LengthOfLongestSubstring(s));
         }
     }
 }
