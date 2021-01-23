@@ -1,6 +1,4 @@
 ﻿
-//this code works for leetcode submission
-//for the runnable code on IDE see Problems/LinkedListCycle.cs
 /**
  * Definition for singly-linked list.
  * public class ListNode {
