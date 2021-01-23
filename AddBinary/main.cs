@@ -11,6 +11,7 @@
             
             if (a.Length > b.Length) b = appendZeros + b; 
             else a = appendZeros + a;
+            
             char sum = '0';
             char carry = '0';
             for ( var i = a.Length - 1; i >= 0; i--)
@@ -18,19 +19,15 @@
                 (sum, carry) = FindSum(a[i], b[i], carry);
                 result.Push(sum);
             }
-
             result.Push(carry);
 
             bool isZero = true;
-            while (isZero && result.Count>1)
+            while (isZero && result.Count > 1)
             {
-                if (result.Peek() == '0')
-                {
-                    result.Pop();
-                }
+                if (result.Peek() == '0') result.Pop();
                 else isZero = false;
             }
-            return new string(new string(result.ToArray()));
+            return new string(result.ToArray());
         }
 
         public (char, char) FindSum(char a, char b, char carry)
