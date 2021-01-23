@@ -9,7 +9,9 @@ namespace Problems
 
     public class Node { 
         public int val; 
+        
         public Node next;
+        
         public Node(int val=0, Node next=null) {
             this.val = val;
             this.next = next;
@@ -59,6 +61,27 @@ namespace Problems
             ReverseList(head, head.next);
             head.next = prev;
         }
+
+        public Node ReverseList1(Node head)
+        {
+            if(head == null) return null;
+            if (head.next == null) return head;
+            
+            Node newHead = null;
+            if (head.next.next == null)
+            {
+                head.next.next = head;
+                newHead = head.next;
+                head.next = null;
+                return newHead;
+            }
+
+            newHead = ReverseList1(head.next);
+            head.next.next = head;
+            head.next = null;
+            return newHead;
+
+        }
         
 
         static void Main(string[] args)
@@ -72,8 +95,8 @@ namespace Problems
                 List.AddNode(List.Head, tem);
             }
 
-            List.ReverseList(null, List.Head);
-            List.PrintList(List.Head);
+            Node head = List.ReverseList1(List.Head);
+            List.PrintList(head);
         }
     }
 }
