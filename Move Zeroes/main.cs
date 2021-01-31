@@ -4,23 +4,19 @@
     {
         public void MoveZeroes(int[] nums)
         {
-            int tem = 0;
+            int index = 0;
             for (int i = 0; i < nums.Length; i++)
             {
-                if (nums[i] == 0)
+                if (nums[i] != 0)
                 {
-                    for (int j = i; j < nums.Length; j++)
-                    {
-                        if (nums[j] != 0)
-                        {
-                            tem = nums[i];
-                            nums[i] = nums[j];
-                            nums[j] = tem;
-                            break;
-                        }
-                    }
+                    nums[index] = nums[i];
+                    index++;
                 }
-                
+            }
+
+            for (; index < nums.Length; index++)
+            {
+                nums[index] = 0;
             }
         }
     }
