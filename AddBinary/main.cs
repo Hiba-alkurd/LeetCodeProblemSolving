@@ -6,22 +6,35 @@
         {
             Stack<char> result = new Stack<char>();
             
-            int lengthDiff = a.Length > b.Length ? a.Length - b.Length : b.Length - a.Length;
-            string appendZeros = new string('0',lengthDiff);
-            
-            if (a.Length > b.Length) b = appendZeros + b; 
-            else a = appendZeros + a;
-            
-            char sum = '0';
-            char carry = '0';
-            for ( var i = a.Length - 1; i >= 0; i--)
+            var maxString = "";
+            var minString = "";
+            if (a.Length > b.Length)
             {
-                (sum, carry) = FindSum(a[i], b[i], carry);
+                maxString = a;
+                minString = b;
+            }
+            else
+            {
+                maxString = b;
+                minString = a;
+            }
+            
+            var sum = '0';
+            var carry = '0';
+            int j = maxString.Length - 1;
+            for (int i = minString.Length - 1; i >= 0; i-- , j--)
+            {
+                (sum, carry) = FindBinarySum(maxString[j], minString[i], carry);
+                result.Push(sum);
+            }
+            for (int i = j ; i >=0; i--)
+            {
+                (sum, carry) = FindBinarySum(maxString[i], '0', carry);
                 result.Push(sum);
             }
             result.Push(carry);
 
-            bool isZero = true;
+            var isZero = true;
             while (isZero && result.Count > 1)
             {
                 if (result.Peek() == '0') result.Pop();
@@ -30,14 +43,17 @@
             return new string(result.ToArray());
         }
 
-        public (char, char) FindSum(char a, char b, char carry)
+        private (char, char) FindBinarySum(char a, char b, char carry)
         {
-            int sum = a + b + carry - '0'*3;
-            if (sum == 0) return ('0', '0');
-            if (sum == 1) return ('1', '0');
-            if (sum == 2) return ('0', '1');
-            if (sum == 3) return ('1', '1');
-            return ('0', '0');
+            var sum = a + b + carry - '0'*3;
+            return sum switch
+            {
+                0 => ('0', '0'),
+                1 => ('1', '0'),
+                2 => ('0', '1'),
+                3 => ('1', '1'),
+                _ => throw new Exception("invalid characters")
+            };
         }
     }
 }
